@@ -15,7 +15,7 @@ class HttpClient {
   static const int CONNECTION_TIMEOUT = 50000;
   static const int RECEIVE_TIMEOUT = 50000;
 
-  static const String BASE_URL = "http://";
+  static const String BASE_URL = "http://home.iitk.ac.in"; // http://172.27.19.7:6987
 
   HttpClient._() {
     initializeDio();
@@ -35,11 +35,12 @@ class HttpClient {
 
   static HttpClient get instance => _singleton;
 
-  Future<Response> getRequest(String path, Map<String, dynamic> header) async {
+  Future getRequest(String path, Map<String, dynamic> header) async {
     var requestOption = Options(
       headers: header,
     );
-    return await _dio.get(path, options: requestOption);
+    var res = await _dio.get(path, options: requestOption);
+    return _parseAndDecode(res.toString());
   }
 
 }

@@ -9,15 +9,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
   dio: ^3.0.8
   flushbar: ^1.9.1
   pdf: ^1.4.1
   path_provider: ^1.5.1
   open_file: ^3.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
 
 flutter:
 

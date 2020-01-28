@@ -102,7 +102,7 @@ void savePage1(data) async {
     }
   ));
 
-  final output = await getExternalStorageDirectory();
+  final output = await getApplicationDocumentsDirectory();// getExternalStorageDirectory();
   final file = File("${output.path}/json_data.pdf");
   print("Saved To $file");
   await file.writeAsBytes(pdf.save());

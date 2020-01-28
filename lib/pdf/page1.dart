@@ -5,9 +5,12 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:open_file/open_file.dart';
+import 'package:intl/intl.dart';
 
 void savePage1(data) async {
   final Document pdf = Document();
+
+  final String date = DateFormat('yyy-MM-dd').format(DateTime.now());
 
   final fontReg = await rootBundle.load("assets/OpenSans-Regular.ttf");
   final fontBold = await rootBundle.load("assets/OpenSans-Bold.ttf");
@@ -34,6 +37,8 @@ void savePage1(data) async {
           Center(
             child: Text("Student Report Reasoning", style: TextStyle(font: Font.ttf(fontBold), fontSize: h2))
           ),
+          SizedBox(height: s),
+          Row(children: <Widget>[Text(date,style: TextStyle(font: Font.ttf(fontReg), fontSize: p)),Expanded(child: Container())]),
           SizedBox(height: s),
           Row(children: <Widget>[Text("Name: ABC",style: TextStyle(font: Font.ttf(fontBold), fontSize: h4)),Expanded(child: Container())]),
           SizedBox(height: s),

@@ -28,6 +28,9 @@ flutter:
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
+  assets:
+    - assets/icons/
+
   fonts:
     - family: OpenSans
       fonts:

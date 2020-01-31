@@ -83,7 +83,13 @@ class PdfPage1State extends State<PdfPage1> {
                     Container(width: 1.0, height: 60.0, color: Colors.black),
                     Expanded(
                       flex: 2,
-                      child: Center(child: Text(widget.data["Result"]["DashQstDetails"][idx]["Result"].toString(), style: TextStyle(color: Colors.black, fontSize: p))),
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: widget.data["Result"]["DashQstDetails"][idx]["Result"]
+                              ? Image.asset("assets/icons/true.png", scale: 0.1,)
+                              : Image.asset("assets/icons/false.png", scale: 0.1,)),
+                        ),
                     ),
                     Container(width: 1.0, height: 60.0, color: Colors.black),
                   ]

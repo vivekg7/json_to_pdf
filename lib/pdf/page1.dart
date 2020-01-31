@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 import 'package:flutter/services.dart';
 
 import 'package:pdf/pdf.dart';
@@ -6,6 +7,8 @@ import 'package:pdf/widgets.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:open_file/open_file.dart';
 import 'package:intl/intl.dart';
+import 'package:printing/printing.dart';
+import 'package:flutter/material.dart' show AssetImage;
 
 void savePage1(data) async {
   final Document pdf = Document();
@@ -14,6 +17,9 @@ void savePage1(data) async {
 
   final fontReg = await rootBundle.load("assets/OpenSans-Regular.ttf");
   final fontBold = await rootBundle.load("assets/OpenSans-Bold.ttf");
+
+  PdfImage imageTrue = await pdfImageFromImageProvider(pdf: pdf.document, image: AssetImage('assets/icons/true.png'),);
+  PdfImage imageFalse = await pdfImageFromImageProvider(pdf: pdf.document, image: AssetImage('assets/icons/false.png'),);
 
   double h1=30, h2=24, h3=20, h4=18, p=12, s=5;
 
@@ -56,7 +62,7 @@ void savePage1(data) async {
                 Container(width: 1.0, height: 60.0, color: PdfColors.black),
                 Expanded(
                   flex: 2,
-                  child: Center(child: Text(data["Result"]["DashQstDetails"][idx]["Result"].toString(), style: TextStyle(font: Font.ttf(fontReg),color: PdfColors.black))),
+                  child: Center(child: Padding(padding: EdgeInsets.all(10.0), child: data["Result"]["DashQstDetails"][idx]["Result"]? Image(imageTrue):Image(imageFalse))),
                 ),
                 Container(width: 1.0, height: 60.0, color: PdfColors.black),
               ]
